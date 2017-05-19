@@ -1,0 +1,24 @@
+version: '2'
+services:
+  # database:
+  #   image: postgres
+  #   volumes:
+  #     - ./data/pgdata:/pgdata
+  #   ports:
+  #     - '5555:5432'
+  #   env_file:
+  #     - '.env'
+  app:
+    # links:
+    #   - database
+    # build: .
+    image: rails:demo
+    volumes:
+      - .:/var/app
+    ports:
+      - '4000:3000'
+    # command: [bundle, exec, puma]
+    # env_file:
+    #   - '.env'
+    stdin_open: true
+    tty: true
