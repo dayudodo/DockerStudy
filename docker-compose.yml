@@ -11,13 +11,14 @@ services:
   app:
     # links:
     #   - database
-    # build: .
+    build: .
     image: rails:demo
     volumes:
       - .:/var/app
     ports:
       - '4000:3000'
     # command: [bundle, exec, puma]
+    command: rails server -b 0.0.0.0 -p 3000
     # env_file:
     #   - '.env'
     stdin_open: true
