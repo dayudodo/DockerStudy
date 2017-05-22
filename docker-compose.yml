@@ -1,16 +1,19 @@
 version: '2'
 services:
-  # database:
-  #   image: postgres
-  #   volumes:
-  #     - ./data/pgdata:/pgdata
-  #   ports:
-  #     - '5555:5432'
-  #   env_file:
-  #     - '.env'
+  db:
+    image: postgres
+    volumes:
+      - ./db:/usr/local/pgsql/data
+    # ports:
+    #   - '5555:5432'
+    # env_file:
+    #   - '.env'
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
   app:
-    # links:
-    #   - database
+    links:
+      - db
     build: .
     image: rails:demo
     volumes:
@@ -19,7 +22,5 @@ services:
       - '4000:3000'
     # command: [bundle, exec, puma]
     command: rails server -b 0.0.0.0 -p 3000
-    # env_file:
-    #   - '.env'
-    stdin_open: true
-    tty: true
+    env_file: 
+      - .env
