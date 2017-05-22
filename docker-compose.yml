@@ -2,8 +2,10 @@ version: '2'
 services:
   db:
     image: postgres
+    # volumes_from: 
+    #   - data
     volumes:
-      - ./db:/usr/local/pgsql/data
+      - ./data:/usr/local/pgsql/data
     # ports:
     #   - '5555:5432'
     # env_file:
@@ -11,6 +13,7 @@ services:
     environment:
       POSTGRES_PASSWORD: docker
       POSTGRES_USER: docker
+      PGDATA: /usr/local/pgsql/data
   app:
     links:
       - db
