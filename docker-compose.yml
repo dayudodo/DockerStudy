@@ -5,15 +5,14 @@ services:
     # volumes_from: 
     #   - data
     volumes:
-      - ./data:/usr/local/pgsql/data
-    # ports:
-    #   - '5555:5432'
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
     # env_file:
     #   - '.env'
     environment:
       POSTGRES_PASSWORD: docker
       POSTGRES_USER: docker
-      PGDATA: /usr/local/pgsql/data
   app:
     links:
       - db
