@@ -6,10 +6,15 @@ It's base on rails5.1.1, postgres. Tested in MacOS.
 ```
 git clone git@github.com:dayudodo/DockerStudy.git
 ```
-- Make a directory data to save the postgres database(see docker-compose.yml).
+- build
+```
+docker-compose build
+```
+
+- create database
 ```
 cd DockerStudy
-mkdir data
+docker-compose run --rm app rails db:create db:migrate
 ```
 - Finally:
 
