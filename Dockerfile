@@ -13,7 +13,7 @@ RUN apt-get update -yqq \
 
 # ENV BUNDLE_PATH vendor/bundle
 # gems中国镜像
-RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.org
+RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
 # 复制并且安装gems到镜像中会减少N多启动的问题
 COPY Gemfile* ./
 RUN bundle install
